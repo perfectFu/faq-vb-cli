@@ -2,9 +2,10 @@
 
 const program = require('commander')
 const inquirer = require('inquirer')
-const download = require('download-git-repo')
+const download = require('download')
 const path = require('path')
-const gitRepoUrl = 'github:perfectFu/vite-template'
+const gitRepoUrl =
+	'https://codeload.github.com/perfectFu/vite-template/zip/main'
 program
 	.command('init')
 	.alias('fi')
@@ -64,7 +65,7 @@ program
 		inquirer.prompt(promp).then(answers => {
 			console.log(answers)
 			// do any works
-			let dest = path.resolve(__dirname, answers.projectName)
+			let dest = path.resolve(process.cwd(), answers.projectName)
 			downloadRepo(gitRepoUrl, dest)
 		})
 	})
