@@ -4,7 +4,7 @@
   "description": "创建自定义的vue模板工具",
   "main": "index.js",
   "bin": {
-    "create": "vb-cli.js"
+    "vb-cli": "./bin/vb-cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

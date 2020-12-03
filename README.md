@@ -33,3 +33,16 @@ program.parse(process.argv)
 // 执行 node .\bin\faq-vb-cli.js init
 // 输出：=> 初始化
 ````
+4. 以全局方式运行
+   通过配置，使用[模块名] [cmd] 运行
+
+- 配置package.json的bin字段
+````json
+"bin": {
+  "vb-cli": "./bin/vb-cli.js"
+}
+````
+- 执行npm run link
+- 在入口文件vb-cli.js中首行添加 #! /usr/bin/env node 表明这是一个可执行的应用
+- 以上步骤完成后，运行vb-cli init。输出：'初始化'
+
