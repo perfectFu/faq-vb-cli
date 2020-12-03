@@ -2,6 +2,9 @@
 
 const program = require('commander')
 const inquirer = require('inquirer')
+const download = require('download-git-repo')
+const path = require('path')
+const gitRepoUrl = 'github:perfectFu/vite-template'
 program
 	.command('init')
 	.alias('fi')
@@ -60,6 +63,19 @@ program
 		}
 		inquirer.prompt(promp).then(answers => {
 			console.log(answers)
+			// do any works
+			let dest = path.resolve(__dirname, answers.projectName)
+			downloadRepo(gitRepoUrl, dest)
 		})
 	})
 program.parse(process.argv)
+
+function downloadRepo(repo, dest) {
+	download(repo, dest, function (err) {
+		if (!err) {
+			console.log('下载成功')
+		} else {
+			console.log(err)
+		}
+	})
+}
