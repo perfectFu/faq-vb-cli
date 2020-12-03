@@ -19,5 +19,17 @@ npm install commander inquirer chalk ora --save
 
 3. 使用commander库定义命令行命令
 ````js
-
+const program = require('commander');
+program
+	.command('init')
+	.alias('fi')
+	.description('初始化项目')
+	.option('-fn, --faq-name', '项目名称')
+	.action(function (option) {
+    // do some works...
+    console.log('初始化...');
+  });
+program.parse(process.argv)
+// 执行 node .\bin\faq-vb-cli.js init
+// 输出：=> 初始化
 ````
